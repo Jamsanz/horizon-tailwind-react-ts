@@ -1,12 +1,35 @@
 import InputField from "components/fields/InputField";
 import { FcGoogle } from "react-icons/fc";
 import Checkbox from "components/checkbox";
+import { FormEvent, useState } from "react";
+import { useAppDispatch } from "store";
+import { authController } from "store/controllers/auth.controller";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { authSelector } from "store/slices/auth.slice";
 
 export default function SignIn() {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  // const [keepMeSignedIn, setKeepMeSignedIn] = useState<boolean>(false);
+  const authState = useSelector(authSelector);
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLogin = (e: FormEvent) => {
+    e.preventDefault();
+    dispatch(authController({ email, password }, () => {
+      window.location.href = "/admin"
+      // navigate('/admin')
+    }));
+  }
+
   return (
     <div className="mt-16 mb-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start">
       {/* Sign in section */}
-      <div className="mt-[10vh] w-full max-w-full flex-col items-center md:pl-4 lg:pl-0 xl:max-w-[420px]">
+      <form onSubmit={handleLogin} className="mt-[10vh] w-full max-w-full flex-col items-center md:pl-4 lg:pl-0 xl:max-w-[420px]">
         <h4 className="mb-2.5 text-4xl font-bold text-navy-700 dark:text-white">
           Sign In
         </h4>
@@ -31,6 +54,8 @@ export default function SignIn() {
           variant="auth"
           extra="mb-3"
           label="Email*"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
           placeholder="mail@simmmple.com"
           id="email"
           type="text"
@@ -41,6 +66,8 @@ export default function SignIn() {
           variant="auth"
           extra="mb-3"
           label="Password*"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
           placeholder="Min. 8 characters"
           id="password"
           type="password"
@@ -53,28 +80,13 @@ export default function SignIn() {
               Keep me logged In
             </p>
           </div>
-          <a
-            className="text-sm font-medium text-brand-500 hover:text-brand-600 dark:text-white"
-            href=" "
-          >
-            Forgot Password?
-          </a>
         </div>
-        <button className="linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200">
-          Sign In
+        <button disabled={authState.isLoading} type="submit" className="linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200">
+          {
+            authState.isLoading ? "Loading...": "Sign In"
+          }
         </button>
-        <div className="mt-4">
-          <span className=" text-sm font-medium text-navy-700 dark:text-gray-600">
-            Not registered yet?
-          </span>
-          <a
-            href=" "
-            className="ml-1 text-sm font-medium text-brand-500 hover:text-brand-600 dark:text-white"
-          >
-            Create an account
-          </a>
-        </div>
-      </div>
+      </form>
     </div>
   );
 }

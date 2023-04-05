@@ -37,6 +37,7 @@ const Dropdown = (props: {
         {button}
       </div>
       <div
+        onClick={_ => setOpenWrapper(!openWrapper)}
         className={`${classNames} absolute z-10 ${
           animation
             ? animation

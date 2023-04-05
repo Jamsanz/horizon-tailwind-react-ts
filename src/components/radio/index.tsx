@@ -1,23 +1,27 @@
-const Radio = (props: {
+import { DetailedHTMLProps, InputHTMLAttributes } from "react";
+
+interface IRadio extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   extra?: string;
   color?:
-    | "red"
-    | "blue"
-    | "green"
-    | "yellow"
-    | "orange"
-    | "teal"
-    | "navy"
-    | "lime"
-    | "cyan"
-    | "pink"
-    | "purple"
-    | "amber"
-    | "indigo"
-    | "gray";
+  | "red"
+  | "blue"
+  | "green"
+  | "yellow"
+  | "orange"
+  | "teal"
+  | "navy"
+  | "lime"
+  | "cyan"
+  | "pink"
+  | "purple"
+  | "amber"
+  | "indigo"
+  | "gray";
   id: string;
   [x: string]: any;
-}) => {
+}
+
+const Radio = (props: IRadio) => {
   const { color, id, name, ...rest } = props;
   return (
     <input

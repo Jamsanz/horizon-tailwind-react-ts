@@ -1,18 +1,16 @@
 // Custom components
-import React from "react";
+import React, { DetailedHTMLProps, InputHTMLAttributes } from "react";
 
-function InputField(props: {
-  id: string;
-  label: string;
-  extra: string;
-  placeholder: string;
-  variant: string;
+interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+  id?: string;
+  label?: string;
+  extra?: string;
+  variant?: string;
   state?: string;
-  disabled?: boolean;
-  type?: string;
-}) {
-  const { label, id, extra, type, placeholder, variant, state, disabled } =
-    props;
+}
+
+function InputField(props: InputProps) {
+  const { label, id, extra, type, placeholder, variant, state, disabled, ...rest } = props;
 
   return (
     <div className={`${extra}`}>
@@ -37,7 +35,8 @@ function InputField(props: {
             : state === "success"
             ? "border-green-500 text-green-500 placeholder:text-green-500 dark:!border-green-400 dark:!text-green-400 dark:placeholder:!text-green-400"
             : "border-gray-200 dark:!border-white/10 dark:text-white"
-        }`}
+          }`}
+        {...rest}
       />
     </div>
   );

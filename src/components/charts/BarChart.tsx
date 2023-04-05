@@ -10,33 +10,19 @@ type ChartState = {
   chartOptions: any;
 };
 
-class ColumnChart extends React.Component<ChartProps, ChartState> {
-  constructor(props: { chartData: any[]; chartOptions: any }) {
-    super(props);
-    this.state = {
-      chartData: [],
-      chartOptions: {},
-    };
-  }
+function ColumnChart(props: ChartProps) {
 
-  componentDidMount() {
-    this.setState({
-      chartData: this.props.chartData,
-      chartOptions: this.props.chartOptions,
-    });
-  }
+  return (
+    <Chart
+      options={props.chartOptions}
+      series={props.chartData}
+      type="bar"
+      width="100%"
+      height="100%"
+    />
+  );
 
-  render() {
-    return (
-      <Chart
-        options={this.state.chartOptions}
-        series={this.state.chartData}
-        type="bar"
-        width="100%"
-        height="100%"
-      />
-    );
-  }
 }
+
 
 export default ColumnChart;

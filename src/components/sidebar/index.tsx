@@ -3,7 +3,6 @@
 import { HiX } from "react-icons/hi";
 import Links from "./components/Links";
 
-import SidebarCard from "components/sidebar/componentsrtl/SidebarCard";
 import routes from "routes";
 
 const Sidebar = (props: {
@@ -26,7 +25,7 @@ const Sidebar = (props: {
 
       <div className={`mx-[56px] mt-[50px] flex items-center`}>
         <div className="mt-1 ml-1 h-2.5 font-poppins text-[26px] font-bold uppercase text-navy-700 dark:text-white">
-          Horizon <span className="font-medium">FREE</span>
+          Galaxy <span className="font-medium">Pizza</span>
         </div>
       </div>
       <div className="mt-[58px] mb-7 h-px bg-gray-300 dark:bg-white/30" />
@@ -37,9 +36,6 @@ const Sidebar = (props: {
       </ul>
 
       {/* Free Horizon Card */}
-      <div className="flex justify-center">
-        <SidebarCard />
-      </div>
 
       {/* Nav item end */}
     </div>

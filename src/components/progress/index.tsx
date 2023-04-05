@@ -1,22 +1,26 @@
-const Progress = (props: {
+import { DetailedHTMLProps, InputHTMLAttributes } from "react";
+
+interface IProgress extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   value: number;
   color?:
-    | "red"
-    | "blue"
-    | "green"
-    | "yellow"
-    | "orange"
-    | "teal"
-    | "navy"
-    | "lime"
-    | "cyan"
-    | "pink"
-    | "purple"
-    | "amber"
-    | "indigo"
-    | "gray";
+  | "red"
+  | "blue"
+  | "green"
+  | "yellow"
+  | "orange"
+  | "teal"
+  | "navy"
+  | "lime"
+  | "cyan"
+  | "pink"
+  | "purple"
+  | "amber"
+  | "indigo"
+  | "gray";
   width?: string;
-}) => {
+}
+
+const Progress = (props: IProgress) => {
   const { value, color, width } = props;
   return (
     <div

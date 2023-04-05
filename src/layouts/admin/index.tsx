@@ -4,18 +4,20 @@ import Navbar from "components/navbar";
 import Sidebar from "components/sidebar";
 import Footer from "components/footer/Footer";
 import routes from "routes";
+import Authenticated from "hoc/authenticated";
 
-export default function Admin(props: { [x: string]: any }) {
+function Admin(props: { [x: string]: any }) {
   const { ...rest } = props;
   const location = useLocation();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(window.innerWidth > 1189);
   const [currentRoute, setCurrentRoute] = React.useState("Main Dashboard");
 
   React.useEffect(() => {
-    window.addEventListener("resize", () =>
-      window.innerWidth < 1200 ? setOpen(false) : setOpen(true)
-    );
+    const resize = () => window.innerWidth < 1200 ? setOpen(false) : setOpen(true);
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
   }, []);
+
   React.useEffect(() => {
     getActiveRoute(routes);
   }, [location.pathname]);
@@ -74,7 +76,7 @@ export default function Admin(props: { [x: string]: any }) {
               secondary={getActiveNavbar(routes)}
               {...rest}
             />
-            <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">
+            <div className="pt-5 mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">
               <Routes>
                 {getRoutes(routes)}
 
@@ -93,3 +95,5 @@ export default function Admin(props: { [x: string]: any }) {
     </div>
   );
 }
+
+export default Authenticated(Admin);

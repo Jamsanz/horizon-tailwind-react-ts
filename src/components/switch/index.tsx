@@ -1,4 +1,6 @@
-const Switch = (props: {
+import { DetailedHTMLProps, InputHTMLAttributes } from "react";
+
+interface ISwitchProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   extra?: string;
   color?:
     | "red"
@@ -16,7 +18,9 @@ const Switch = (props: {
     | "indigo"
     | "gray";
   [x: string]: any;
-}) => {
+}
+
+const Switch = (props: ISwitchProps) => {
   const { extra, color, ...rest } = props;
   return (
     <input
