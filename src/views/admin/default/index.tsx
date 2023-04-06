@@ -10,7 +10,7 @@ import { GET_DASHBOARD_DATA } from "graphql/queries/dashboard/get";
 import { formatToCurrency } from "utils";
 
 const Dashboard = () => {
-  const { data, error } = useQuery(GET_DASHBOARD_DATA);
+  const { data, error, loading } = useQuery(GET_DASHBOARD_DATA);
   return (
     <div>
       {/* Card widget */}
@@ -20,31 +20,43 @@ const Dashboard = () => {
           icon={<MdBarChart className="h-7 w-7" />}
           title={"Total Earnings"}
           subtitle={`N ${formatToCurrency(data?.dashboard?.totalEarnings)}`}
+          loading={loading}
+          error={error?.message}
         />
         <Widget
           icon={<IoDocuments className="h-6 w-6" />}
           title={"Earnings this month"}
           subtitle={`N ${formatToCurrency(data?.dashboard?.monthlyEarnings)}`}
+          loading={loading}
+          error={error?.message}
         />
         <Widget
           icon={<MdBarChart className="h-7 w-7" />}
           title={"Sales"}
           subtitle={`${data?.dashboard?.sales}`}
+          loading={loading}
+          error={error?.message}
         />
         <Widget
           icon={<MdDashboard className="h-6 w-6" />}
           title={"Categories"}
           subtitle={`${data?.dashboard?.categories}`}
+          loading={loading}
+          error={error?.message}
         />
         <Widget
           icon={<MdBarChart className="h-7 w-7" />}
           title={"Products"}
           subtitle={`${data?.dashboard?.products}`}
+          loading={loading}
+          error={error?.message}
         />
         <Widget
           icon={<IoMdHome className="h-6 w-6" />}
           title={"Topings"}
           subtitle={`${data?.dashboard?.topings}`}
+          loading={loading}
+          error={error?.message}
         />
       </div>
 
@@ -60,32 +72,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-{/* Tables & Charts */ }
-
-{/* <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2"> */}
-  {/* Check Table */}
-  {/* <div>
-    <CheckTable tableData={tableDataCheck} />
-  </div> */}
-
-  {/* Traffic chart & Pie Chart */}
-
-  {/* <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
-    <DailyTraffic />
-    <PieChartCard />
-  </div> */}
-
-  {/* Complex Table , Task & Calendar */}
-
-  {/* <ComplexTable tableData={tableDataComplex} /> */}
-
-  {/* Task chart & Calendar */}
-
-  {/* <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
-    <TaskCard />
-    <div className="grid grid-cols-1 rounded-[20px]">
-      <MiniCalendar />
-    </div>
-  </div>
-</div> */}

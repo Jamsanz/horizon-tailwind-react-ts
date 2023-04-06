@@ -12,7 +12,6 @@ const Tables = () => {
   const { data, loading, error } = useQuery(GET_CATEGORIES);
   const [category, setCategory] = useState<Category>();
 
-  if(loading) return <div className="w-full h-24 grid place-content-center">Loading...</div>
   if (error) return <div className="w-full h-24 grid place-content-center">{error.message}</div>
   
   return (

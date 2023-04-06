@@ -19,7 +19,6 @@ import {
 import { BiCategory, BiExpandAlt, BiDroplet } from 'react-icons/bi';
 import { GiFullPizza } from 'react-icons/gi';
 import { AiFillStop } from 'react-icons/ai'
-import Categories from "views/admin/category/components/category.table";
 import Items from "views/admin/item";
 import Topings from "views/admin/toping";
 import Crusts from "views/admin/crust";

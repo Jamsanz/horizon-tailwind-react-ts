@@ -19,6 +19,7 @@ const OrderTable = (props: IProps) => {
    }, [props.data]);
 
   return (
+    data?.length > 0 ?
     <Card extra={"w-full overflow-auto px-6 pb-6"}>
       <header className="relative flex items-center justify-between pt-4">
         <div className="text-xl font-bold text-navy-700 dark:text-white">
@@ -126,7 +127,11 @@ const OrderTable = (props: IProps) => {
           </tbody>
         </table>
       </div>
-    </Card>
+      </Card>
+      :
+      <div className='grid h-24 w-full place-content-center'>
+        <p>No order available</p>
+      </div>
   )
 }
 
