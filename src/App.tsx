@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import store from "store";
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:5000/graphql',
+  uri: 'https://galaxy-backend-production.up.railway.app/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

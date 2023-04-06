@@ -26,8 +26,7 @@ const Sidebar = (props: {
       </span>
 
       <div className={`mx-[56px] mt-[50px] flex items-center`}>
-        <div className="mt-1 ml-1 h-2.5 font-poppins text-[20px] font-bold uppercase text-navy-700 dark:text-white">
-          {/* <AiFillDashboard className="mx-auto" /> */}
+        <div className="mt-1 ml-1 h-2.5 font-poppins text-[26px] font-bold uppercase text-navy-700 dark:text-white">
           Order <span className="font-medium">App</span>
         </div>
       </div>
