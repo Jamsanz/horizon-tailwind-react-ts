@@ -166,7 +166,6 @@ const Navbar = (props: {
               <div className="mt-3 ml-4 flex flex-col">
                 <a
                   href=" "
-                  onClick={handleLogout}
                   className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
                 >
                   Profile Settings
