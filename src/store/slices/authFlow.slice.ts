@@ -21,7 +21,6 @@ const authFlowSlice = createSlice({
       try {
         window.localStorage.removeItem("user");
         window.localStorage.removeItem("token");
-        window.location.reload();
       } catch (error) {
         console.error(error)
       }

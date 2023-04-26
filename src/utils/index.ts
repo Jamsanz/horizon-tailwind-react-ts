@@ -1,8 +1,10 @@
 import axios from "axios";
 import moment from "moment";
 
+const baseURL = process.env.NODE_ENV === "development" ? 'http://localhost:5000' : "https://galaxy-backend-production.up.railway.app";
+
 const http = axios.create({
-  baseURL: "https://galaxy-backend-production.up.railway.app/",
+  baseURL
 });
 
 http.interceptors.request.use(async (config) => {

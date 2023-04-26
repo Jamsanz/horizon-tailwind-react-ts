@@ -1,12 +1,17 @@
 /* eslint-disable */
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import DashIcon from "components/icons/DashIcon";
+import { getUser } from "utils";
+import { IUser } from "interfaces/user.interface";
 // chakra imports
 
-export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
+const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
   // Chakra color mode
   let location = useLocation();
+
+  // verifying user role
+  const superadmin = JSON.parse(getUser())?.role?.includes("SUPER_ADMIN");
 
   const { routes } = props;
 
@@ -16,10 +21,15 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
   };
 
   const createLinks = (routes: RoutesType[]) => {
+    
     return routes.map((route, index) => {
       if (
         route.layout === "/admin"
       ) {
+        if (!superadmin && route.path === 'users') {
+          return <React.Fragment key={index}></React.Fragment>;
+        }
+
         return (
           <Link key={index} to={route.layout + "/" + route.path}>
             <div className="relative mb-3 flex hover:cursor-pointer">

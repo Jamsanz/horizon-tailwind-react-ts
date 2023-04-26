@@ -21,8 +21,7 @@ export default function SignIn() {
   const handleLogin = (e: FormEvent) => {
     e.preventDefault();
     dispatch(authController({ email, password }, () => {
-      window.location.href = "/admin"
-      // navigate('/admin')
+      navigate('/admin/default', { replace: true });
     }));
   }
 

@@ -5,6 +5,7 @@ export interface IUser extends IAuth {
   profileImg?: string;
   dob?: string | Date;
   _id?: string;
+  role?: Array<"ADMIN" | "SUPER_ADMIN" | "USER">;
 }
 
 export interface IAuth {

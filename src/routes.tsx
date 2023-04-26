@@ -3,7 +3,6 @@ import React from "react";
 // Admin Imports
 import MainDashboard from "views/admin/default";
 import Orders from "views/admin/order";
-import Profile from "views/admin/profile";
 import DataTables from "views/admin/category";
 
 // Auth Imports
@@ -23,6 +22,7 @@ import Items from "views/admin/item";
 import Topings from "views/admin/toping";
 import Crusts from "views/admin/crust";
 import Sizes from "views/admin/size";
+import Users from "views/admin/users";
 
 const routes = [
   {
@@ -75,13 +75,13 @@ const routes = [
     path: "sizes",
     component: <Sizes />,
   },
-  // {
-  //   name: "Profile",
-  //   layout: "/admin",
-  //   path: "profile",
-  //   icon: <MdPerson className="h-6 w-6" />,
-  //   component: <Profile />,
-  // },
+  {
+    name: "Users",
+    layout: "/admin",
+    path: "users",
+    icon: <MdPerson className="h-6 w-6" />,
+    component: <Users />,
+  },
   {
     name: "Sign In",
     layout: "/auth",

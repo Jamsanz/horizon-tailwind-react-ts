@@ -8,7 +8,6 @@ export default function Auth() {
   const getRoutes = (routes: RoutesType[]): any => {
     return routes.map((prop, key) => {
       if (prop.layout === "/auth") {
-        console.log("auth", prop);
         return (
           <Route path={`/${prop.path}`} element={prop.component} key={key} />
         );
